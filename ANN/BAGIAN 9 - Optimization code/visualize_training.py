@@ -22,7 +22,7 @@ def calculate_loss_surface(weight_range, bias_range, X, Y):
 # file_load: str = "training_random_search_results.pkl"
 
 
-def visualize_gradient_descent(file_load: str = "training_random_search_results.pkl"):
+def visualize_gradient_descent(file_load: str = "training_gradient_descent_results.pkl"):
     # Cek apakah file hasil training ada
     if not os.path.exists(f"ANN/BAGIAN 9 - Optimization code/{file_load}"):
         print(f"File 'ANN/BAGIAN 9 - Optimization code/{file_load}' tidak ditemukan.")

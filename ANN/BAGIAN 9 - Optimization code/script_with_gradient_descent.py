@@ -2,8 +2,8 @@ import numpy as np
 import pickle
 from NeuralNet import Linear, MeanSquaredError
 
-# def min_max_scaler(data):
-#     return (data - np.min(data)) / (np.max(data) - np.min(data))
+def min_max_scaler(data):
+    return (data - np.min(data)) / (np.max(data) - np.min(data))
 
 def train_model(
         seed: int = 42,
@@ -13,7 +13,7 @@ def train_model(
         file_save: str = 'training_gradient_descent_results.pkl',
         
         # Hyperparameter
-        learning_rate: float = 0.00001,  # Disesuaikan agar konvergensi stabil
+        learning_rate: float = 0.1,  # Disesuaikan agar konvergensi stabil
         patience: int = 5,  # Jumlah iterasi yang diperbolehkan tanpa penurunan loss
         epsilon: float = 1e-3  # Threshold minimum perubahan loss yang dianggap signifikan
     ) -> dict:
@@ -26,7 +26,7 @@ def train_model(
     harga_rumah = np.round(
         (luas_rumah * 5 + np.random.normal(0, 75, luas_rumah.shape)).reshape(-1, 1), 2
     )
-    X = luas_rumah
+    X = min_max_scaler(luas_rumah)
     Y = harga_rumah
 
     # Inisialisasi model
